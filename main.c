@@ -3,17 +3,17 @@
 #include <stdio.h>
 
 void turnIntoBinary(int n, Stack *q);
-void popAndPrint(Stack *q);
 
 int main() {
   int n;
   // address newNode;
   Stack q;
+  createStack(&q);
   printf("Masukkan Angka: ");
   scanf("%d", &n);
   turnIntoBinary(n, &q);
   Tampil_List(q);
-  popAndPrint(&q);
+  popAllAndPrint(&q);
   Tampil_List(q);
 
   return 0;
@@ -27,13 +27,4 @@ void turnIntoBinary(int n, Stack *q) {
     Push(q, newNode);
     turnIntoBinary(n / 2, q);
   }
-}
-
-void popAndPrint(Stack *q) {
-  while (!isEmpty(*q)) {
-    infotype X;
-    Pop(q, &X);
-    printf("%d", X);
-  }
-  printf("\n");
 }

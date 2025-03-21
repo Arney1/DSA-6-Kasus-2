@@ -10,6 +10,10 @@ bool isEmpty(address p) {
   return (p == NULL);
 }
 
+void createList(address *p) {
+    *p = NULL;
+}
+
 void Create_Node(address *p) {
   *p = (address)malloc(sizeof(ElmtList));
   // if (*p == NULL) {

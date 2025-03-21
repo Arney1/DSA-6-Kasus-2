@@ -19,6 +19,7 @@ typedef struct tElmtList {
 
 bool isEmpty(address p);
 void Create_Node(address *p);
+void createList(address *p);
 void Isi_Node(address *p, infotype nilai);
 void Tampil_List(address p);
 void Ins_Awal(address *p, address PNew);
