@@ -113,7 +113,7 @@ void Del_After(address *pBef, infotype *X) {
 
 void DeAlokasi(address *p) {
   while (!isEmpty(*p)) {
-    int i;
+    infotype i;
     Del_Awal(p, &i);
   }
 }
@@ -169,80 +169,4 @@ address BalikList(address p) {
     p = this;
   }
   return p;
-}
-
-int main() {
-  address head = NULL;
-  address newNode;
-  infotype value;
-
-  printf("=== TESTING LINKED LIST ===\n");
-
-  // Test Create Node & Insert at the Beginning
-  printf("Inserting 10, 20, 30, 40, 50, 60 at the beginning:\n");
-  for (int i = 10; i <= 60; i += 10) {
-    Create_Node(&newNode);
-    Isi_Node(&newNode, i);
-    Ins_Awal(&head, newNode);
-  }
-  Tampil_List(head);
-
-  // Test Insert at the End
-  printf("Inserting 40 at the end:\n");
-  Create_Node(&newNode);
-  Isi_Node(&newNode, 40);
-  Ins_Akhir(&head, newNode);
-  Tampil_List(head);
-
-  // Test Search
-  printf("Searching for value 20:\n");
-  address found = Search(head, 20);
-  if (found != NULL)
-    printf("Value 20 found!\n");
-  else
-    printf("Value 20 not found!\n");
-
-  printf("Inserting 67 after 20\n");
-  Create_Node(&newNode);
-  Isi_Node(&newNode, 67);
-  InsertAfter(&found, newNode);
-  Tampil_List(head);
-
-  // Test Delete First
-  printf("Deleting first element:\n");
-  Del_Awal(&head, &value);
-  printf("Deleted value: %d\n", value);
-  Tampil_List(head);
-
-  // Test Delete Last
-  printf("Deleting last element:\n");
-  Del_Akhir(&head, &value);
-  printf("Deleted value: %d\n", value);
-  Tampil_List(head);
-
-  printf("Deleting node after 20:\n");
-  found = Search(head, 20);
-    Del_After(&found, &value);
-    printf("Deleted value: %d\n", value);
-    Tampil_List(head);
-
-  // Test Reverse List
-  printf("Reversing the list:\n");
-  head = BalikList(head);
-  Tampil_List(head);
-
-  // Test Count Elements
-  printf("Number of elements: %d\n", NbElmt(head));
-
-  // Test Min & Average
-  if (!isEmpty(head)) {
-    printf("Minimum value: %d\n", Min(head));
-    printf("Average value: %d\n", Rerata(head));
-  }
-
-  // Cleanup
-  DeAlokasi(&head);
-  printf("List cleared.\n");
-
-  return 0;
 }
